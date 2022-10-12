@@ -1,0 +1,101 @@
+grupos_dict = {1: "cereais_der", 2: "verduras_hortalicas_der", 3: "frutas_der",
+              4: "gorduras_oleo", 5: "pescados_frutos_mar", 6: "carnes_der",
+              7: "leite_der", 8: "bebidas", 9: "ovos_der", 10: "produtos_acucarados", 
+              11: "miscelaneas",  12: "alimentos_indus", 13: "alimentos_prep", 
+              14: "legumosas_der", 15: "nozes_semen"}
+
+tipos_prato = {1: 'Acompanhamento Arroz', 2: 'Acompanhamento Feijão', 3: 'Entrada', 4: 'Guarnição', 5: 'Principal', 6: 'Sobremesa', 
+               7: 'Bebida', 8: 'Lanche'}
+
+cor = {1: 'amarelo', 2: 'vermelho', 3: 'verde', 4: 'marrom', 5: 'N/T'}
+
+consistencia = {1: 'Líquido/pastoso', 2: 'Semi-sólido/sólido'}
+
+refeicao = {1: "desjejum", 2: "almoço", 3: "lanche"}
+
+{
+  "nome": "Bolo",
+  "tipo": 8,
+  "cor": 5,
+  "consistencia": 2,
+  "ingredientes": [
+    {
+      "id": 489
+    }
+    {
+      "id": 35
+    }
+    {
+      "id": 513
+    }
+    {
+      "id": 458
+    }
+    {
+      "id": 261
+    }
+  ]
+}
+
+# Script BD para grupos dos alimentos
+'''
+
+UPDATE alimentos
+SET grupo = 1
+WHERE id >= 1 ANd id <= 63
+UPDATE alimentos
+SET grupo = 2
+WHERE id >= 64 ANd id <= 162
+UPDATE alimentos
+SET grupo = 3
+WHERE id >= 163 ANd id <= 258
+UPDATE alimentos
+SET grupo = 4
+WHERE id >= 259 ANd id <= 272
+UPDATE alimentos
+SET grupo = 5
+WHERE id >= 273 ANd id <= 322
+UPDATE alimentos
+SET grupo = 6
+WHERE id >= 323 ANd id <= 445
+UPDATE alimentos
+SET grupo = 7
+WHERE id >= 446 ANd id <= 469
+UPDATE alimentos
+SET grupo = 8
+WHERE id >= 470 ANd id <= 483
+UPDATE alimentos
+SET grupo = 9
+WHERE id >= 484 ANd id <= 490
+UPDATE alimentos
+SET grupo = 10
+WHERE id >= 491 ANd id <= 510
+UPDATE alimentos
+SET grupo = 11
+WHERE id >= 511 ANd id <= 519
+UPDATE alimentos
+SET grupo = 12
+WHERE id >= 520 ANd id <= 524
+UPDATE alimentos
+SET grupo = 13
+WHERE id >= 525 ANd id <= 556
+UPDATE alimentos
+SET grupo = 14
+WHERE id >= 557 ANd id <= 586
+UPDATE alimentos
+SET grupo = 15
+WHERE id >= 587 ANd id <= 597
+
+'''
+
+ensino = {"energia": 300, "carboidratos": 48.8, "proteinas": 9.4, "lipideos": 7.5, 
+          "fibras": 5.4, "calcio": 210, "ferro": 1.8, "magnesio": 37, "zinco": 1.3}
+fundamental = {"energia": 435, "carboidratos": 70.7, "proteinas": 13.6, "lipideos": 10.9, 
+               "fibras": 6.1, "calcio": 260, "ferro": 2.1, "magnesio": 63, "zinco": 1.8}
+
+faixa_etaria = {1: ensino, 2: fundamental}
+
+refeicao = {1: "desjejum", 2: "almoço", 3: "lanche"}
+
+
+nutrientes = {"Energia": 0, "CHO": 0, "PTN": 0, "LIP": 0, "Fibras": 0, "Ca": 0, "Fe": 0, "Mg": 0, "Zn": 0 }
