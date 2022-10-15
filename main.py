@@ -20,7 +20,7 @@ models.Base.metadata.create_all(bind=engine)
 
 @app.get("/")
 def index():
-    return {"Welcome INutriEscolar"}
+    return {"Bem Vindo ao INutriEscolar"}
 
 
 app.include_router(rotaAlimentos.alimento, tags=['Alimento'])

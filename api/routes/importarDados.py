@@ -18,5 +18,5 @@ def get_db():
 
 @data.get("/import_data/")
 def importarDados(db: Session = Depends(get_db)):
-    data_alimentos.export_data(db)
+    data_alimentos.importarDados(db)
 
