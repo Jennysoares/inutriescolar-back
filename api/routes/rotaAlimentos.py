@@ -22,6 +22,10 @@ def novoAlimento(alimento: schemas.Alimento, db: Session = Depends(get_db)):
     alimento = crud.criarAlimento(db=db, alimento=alimento)
     return alimento
 
+@alimento.post("/alimento/listar/")
+def novoAlimento(alimento: schemas.Alimento, db: Session = Depends(get_db)):
+    alimento = crud.buscarTodosAlimentos(db=db)
+    return alimento
 
 @alimento.get("/alimento/buscar/", response_model=List[schemas.Alimento])
 def retornaTodosAlimentos(db: Session = Depends(get_db)):
