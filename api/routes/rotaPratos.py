@@ -16,9 +16,8 @@ def get_db():
         db.close()
 
 
-@prato.post("/prato/criar/", response_model=schemas.Prato)
-def novoPrato(nome: str, categoria: str, cor: str, consistencia: str, valor: float, prato: schemas.PratoCreate,
-                 db: Session = Depends(get_db)):
+@prato.post("/prato/criar/")
+def novoPrato( prato: schemas.Prato, db: Session = Depends(get_db)):
     prato = crud.criarPrato(db=db, prato=prato)
     return prato
 
@@ -35,9 +34,8 @@ def retornaPratoPorId(prato_id: int, db: Session = Depends(get_db)):
     return prato
 
 
-@prato.post("/prato/adicionar/alimento/", response_model=schemas.Criacao)
-def adicionarAlimentoPrato(id_alimento: int, id_prato: int, qtdEnsinoCreche: int, qtdEnsinoFun1: int, qtdEnsinoFun2: int,
-    qtdEnsinoMedio: int,criacao: schemas.CriacaoCreate, db: Session = Depends(get_db)):
+@prato.post("/prato/adicionar/alimento/")
+def adicionarAlimentoPrato(criacao: schemas.Criacao, db: Session = Depends(get_db)):
     return crud.criarCriacao(db=db, criacao=criacao)
 
 

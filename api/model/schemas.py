@@ -3,8 +3,7 @@ from typing import List, Optional
 from pydantic import BaseModel
 
 
-class AlimentoBase(BaseModel):
-    id: int
+class Alimento(BaseModel):
     nome: str
     energia: int
     proteinas: float
@@ -18,19 +17,7 @@ class AlimentoBase(BaseModel):
     grupo: str
     
 
-
-class AlimentoCreate(AlimentoBase):
-    pass
-
-
-class Alimento(BaseModel):
-    id: int
-
-    class Config:
-        orm_mode = True
-
-
-class PratoBase(BaseModel):
+class Prato(BaseModel):
     id: int
     nome: str
     categoria: str
@@ -39,18 +26,8 @@ class PratoBase(BaseModel):
     valor: float
 
 
-class PratoCreate(PratoBase):
-    pass
 
-
-class Prato(BaseModel):
-    id: int
-
-    class Config:
-        orm_mode = True
-
-
-class CriacaoBase(BaseModel):
+class Criacao(BaseModel):
     id_alimento: int
     id_prato: int
     qtdEnsinoCreche: int
@@ -58,22 +35,7 @@ class CriacaoBase(BaseModel):
     qtdEnsinoFun2: int
     qtdEnsinoMedio: int
 
-
-class CriacaoCreate(CriacaoBase):
-    pass
-
-
-class Criacao(BaseModel):
-    id: int
-    id_alimento: int
-    id_prato: int
-
-    class Config:
-        orm_mode = True
-
-
-class ReferencialNutrientesBase(BaseModel):
-    id: int
+class ReferencialNutrientes(BaseModel):
     escolaridade: int 
     energia: int
     proteinas: float
@@ -85,14 +47,3 @@ class ReferencialNutrientesBase(BaseModel):
     zinco: float
     magnesio: int 
     custoAluno: float
-
-
-class ReferencialCreate(ReferencialNutrientesBase):
-    pass
-
-
-class ReferencialNutrientes(BaseModel):
-    id: int
-
-    class Config:
-        orm_mode = True

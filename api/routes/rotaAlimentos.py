@@ -17,11 +17,8 @@ def get_db():
         db.close()
 
 
-@alimento.post("/alimento/criar/", response_model=schemas.Alimento)
-def novoAlimento(nome: str, energia: int, proteinas: float, 
-                carboidratos: float, lipideos: float, fibras: float, calcio: int,
-                ferro: float, zinco: float, magnesio: int, grupo: str, 
-                alimento: schemas.AlimentoCreate, db: Session = Depends(get_db)):
+@alimento.post("/alimento/criar/")
+def novoAlimento(alimento: schemas.Alimento, db: Session = Depends(get_db)):
     alimento = crud.criarAlimento(db=db, alimento=alimento)
     return alimento
 

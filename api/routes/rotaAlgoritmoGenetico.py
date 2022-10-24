@@ -65,8 +65,8 @@ def gerarCardapioAG(numIndividuos: int, qtd_dias: int, escolaridade: int, tipoSe
 
     return geracao_atual
         
-@algoritmo.get("/genetic/dizimacao/{numIndividuos}/{qtd_dias}/{escolaridade}")
-def algoritmo_genetico(numIndividuos: int, qtd_dias: int, escolaridade: int, db: Session = Depends(get_db)):
+@algoritmo.get("/genetic/dizimacao/{numIndividuos}/{qtd_dias}/{escolaridade}/{alergia}")
+def algoritmo_genetico(numIndividuos: int, qtd_dias: int, escolaridade: int, alergia: int, db: Session = Depends(get_db)):
     
     populacao = gerarCardapioAG(numIndividuos, qtd_dias, escolaridade, 1, db)
     return populacao

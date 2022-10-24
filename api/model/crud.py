@@ -21,7 +21,7 @@ def buscarPratoPorId(db: Session, prato_id: int):
     return prato
 
 
-def criarAlimento(db: Session, alimento: schemas.AlimentoCreate):
+def criarAlimento(db: Session, alimento: schemas.Alimento):
     db_alimento = models.Alimento(**alimento.dict())
     db.add(db_alimento)
     db.commit()
@@ -29,7 +29,7 @@ def criarAlimento(db: Session, alimento: schemas.AlimentoCreate):
     return db_alimento
 
 
-def criarPrato(db: Session, prato: schemas.PratoCreate):
+def criarPrato(db: Session, prato: schemas.Prato):
     db_prato = models.Prato(**prato.dict())
     db.add(db_prato)
     db.commit()
@@ -37,7 +37,7 @@ def criarPrato(db: Session, prato: schemas.PratoCreate):
     return db_prato
 
 
-def criarCriacao(db: Session, criacao: schemas.CriacaoCreate):
+def criarCriacao(db: Session, criacao: schemas.Criacao):
     db_criacao = models.Criacao(**criacao.dict())
     db.add(db_criacao)
     db.commit()
