@@ -23,7 +23,7 @@ def novoAlimento(alimento: schemas.Alimento, db: Session = Depends(get_db)):
     return alimento
 
 @alimento.get("/alimento/listar/")
-def novoAlimento(alimento: schemas.Alimento, db: Session = Depends(get_db)):
+def novoAlimento(db: Session = Depends(get_db)):
     alimento = crud.buscarTodosAlimentos(db=db)
     return alimento
 
