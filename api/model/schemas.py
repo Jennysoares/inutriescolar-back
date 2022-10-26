@@ -18,7 +18,6 @@ class Alimento(BaseModel):
     
 
 class Prato(BaseModel):
-    id: int
     nome: str
     categoria: str
     cor: str
