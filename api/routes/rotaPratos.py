@@ -39,6 +39,11 @@ def adicionarAlimentoPrato(criacao: schemas.Criacao, db: Session = Depends(get_d
     return crud.criarCriacao(db=db, criacao=criacao)
 
 
+@prato.post("/prato/adicionar/alimentos/")
+def adicionarAlimentoPrato(criacao: schemas.CriacaoList, db: Session = Depends(get_db)):
+    return crud.criarCriacaoList(db=db, criacao=criacao)
+
+
 @prato.delete("/prato/deletar/{prato_id}")
 def excluirPrato(prato_id: int, db: Session = Depends(get_db)):
     if crud.deletarPrato(db, prato_id):

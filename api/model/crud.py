@@ -44,6 +44,13 @@ def criarCriacao(db: Session, criacao: schemas.Criacao):
     db.refresh(db_criacao)
     return db_criacao
 
+def criarCriacaoList(db: Session, criacao: schemas.CriacaoList):
+    for item in criacao.data:
+        db_criacao = models.Criacao(**item.dict())
+        db.add(db_criacao)
+        db.commit()
+        db.refresh(db_criacao)
+    return db_criacao
 
 def deletarAlimento(db: Session, alimento_id):
     alimento = buscarAlimentoPorId(db, alimento_id)

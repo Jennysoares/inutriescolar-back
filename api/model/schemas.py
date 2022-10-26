@@ -1,3 +1,4 @@
+from ast import Dict
 from typing import List, Optional
 
 from pydantic import BaseModel
@@ -33,6 +34,9 @@ class Criacao(BaseModel):
     qtdEnsinoFun1: int
     qtdEnsinoFun2: int
     qtdEnsinoMedio: int
+
+class CriacaoList(BaseModel):
+    data: List[Criacao]
 
 class ReferencialNutrientes(BaseModel):
     escolaridade: int 
