@@ -53,9 +53,9 @@ def gerarCardapioAG(numIndividuos: int, qtd_dias: int, escolaridade: int, tipoSe
             if tipoSelecao == 1:
                 pais = funcao_dizimacao_pais(corte_populacao)
             elif tipoSelecao == 2:
-                pais = funcao_roleta(populacao, referencial)
+                pais = funcao_roleta(populacao, escolaridade, referencial, db)
             elif tipoSelecao == 3:
-                pais = funcao_torneio(populacao, referencial)
+                pais = funcao_torneio(populacao, escolaridade, referencial, db)
 
             filhos_gerados = cruzamento(pais, taxa_cruzamento)
             filhos_mutados = mutacao(filhos_gerados, taxa_mutacao, alergia, db)
