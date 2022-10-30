@@ -30,7 +30,6 @@ def novoAlimento(db: Session = Depends(get_db)):
 @alimento.get("/alimento/buscar/", response_model=List[schemas.Alimento])
 def retornaTodosAlimentos(db: Session = Depends(get_db)):
     alimentos = crud.buscarTodosAlimentos(db)
-    print(alimentos)
     return alimentos
 
 

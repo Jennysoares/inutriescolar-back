@@ -1,0 +1,183 @@
+﻿1;BISCOITO CASEIRO;Pão/Cereal;Marrom;Sólida;0.20
+2;LEITE COLORIDO;Leite ou derivados;Laranja;Líquida;0.10
+3;BOLO DE ABACAXI;Sobremesa;Amarelo;Sólida;0.24
+4;LEITE  ;Leite ou derivados;Branco;Líquida;0.10
+5;BROA DE FUBÁ;Pão/Cereal;Amarelo;Sólida;0.7
+6;CAFÉ COM LEITE;Leite ou derivados;Marrom;Líquida;0.25
+7;BISCOITO  ;Pão/Cereal;Marrom;Sólida;0.07
+8;PÃO;Pão/Cereal;Branco;Sólida;0.3
+9;IORGUTE ;Leite ou derivados;Branco;Líquida;0.35
+10;LEITE ACHOCOLATADO;Leite ou derivados;Marrom;Líquida;0.26
+11;TORRADAS TEMPERADAS;Pão/Cereal;Amarelo;Sólida;0.05
+12;LEITE CARAMELADO;Leite ou derivados;Branco;Líquida;0.16
+13;MINGAU DE AVEIA;Pão/Cereal;Branco;Pastosa;0.06
+14;MINGAU DE FUBÁ COM BANANA;Pão/Cereal;Branco;Pastosa;0.20
+15;MINGAU DE MILHO VERDE;Pão/Cereal;Amarelo;Pastosa;0.06
+16;PÃO DE CEBOLA;Pão/Cereal;Amarelo;Sólida;0.06
+17;ROSCA CASEIRA;Pão/Cereal;Amarelo;Sólida;0.16
+18;VIRAMINA DE MORANGO;Leite ou derivados;Rosa;Líquida;0.06
+19;ROSQUINHA DE COCO CASEIRA;Pão/Cereal;Branco;Sólida;0.20
+20;ROSQUINHA DE POLVILHO;Pão/Cereal;Branco;Sólida;0.06
+21;VITAMINA DE FRUTAS ;Leite ou derivados;Amarelo;Líquida;0.07
+22;SUCO DE LARANJA ;Suco;Amarelo;Líquida;0.3
+23;BISCOITO DE QUEIJO;Lanche;Amarelo;Sólida;0.35
+24;SUCO DE MANGA;Suco;Amarelo;Líquida;0.26
+25;BOLO DE BANANA;Sobremesa;Amarelo;Sólida;0.05
+26;BOLO DE IORGUTE;Sobremesa;Branco;Sólida;0.16
+27;BOLO DE MAÇA COM AVEIA;Sobremesa;Branco;Sólida;0.06
+28;BROA DE FARINHA DE MILHO;Pão/Cereal;Amarelo;Sólida;0.20
+29;CUSCUZ COM QUEIJO;Pão/Cereal;Amarelo;Sólida;0.06
+30;PÃO COM QUEIJO;Pão/Cereal;Amarelo;Sólida;0.10
+31;SALADA DE FRUTAS;Frutas;Amarelo;Sólida;0.24
+32;TORTA COLORIDA DE FRANGO;Sobremesa;Amarelo;Sólida;0.10
+33;TORTA DE LEGUMES;Sobremesa;Amarelo;Sólida;0.7
+34;ARROZ;Acompanhamento Arroz;Branco;Sólida;0.25
+35;ALMÔNDEGAS DE CARNE;Principal;Marrom;Sólida;0.07
+36;FEIJÃO;Acompanhamento Feijão;Marrom;Sólida;0.3
+37;SALADA  ;Guarnição;Verde;Sólida;0.35
+38;CARNE COZIDA COM MANDIOCA;Principal;Marrom;Sólida;0.26
+39;CUBOS BOVINOS;Principal;Marrom;Sólida;0.05
+40;LEGUMES REFOGADOS;Guarnição;Verde;Sólida;0.16
+41;CARNE COZIDA  ;Principal;Marrom;Sólida;0.06
+42;PURÊ DE BATATA;Guarnição;Amarelo;Pastosa;0.20
+43;CARNE MOÍDA;Principal;Marrom;Sólida;0.06
+44;POLENTA À JARDINEIRA;Guarnição;Amarelo;Pastosa;0.3
+45;FAROFA DE ABOBRINHA;Guarnição;Amarelo;Sólida;0.35
+46;BIFE;Principal;Marrom;Sólida;0.26
+47;FAROFA DE BANANA;Guarnição;Amarelo;Sólida;0.05
+48;ISCAS BOVINA;Principal;Marrom;Sólida;0.20
+49;ABÓBORA REFOGADA;Guarnição;Laranja;Sólida;0.10
+50;CARNE ACEBOLADA;Principal;Marrom;Sólida;0.24
+51;TUTU DE FEIJÃO;Guarnição;Marrom;Pastosa;0.10
+52;CARNE COZIDA COM LEGUMES;Principal;Marrom;Sólida;0.7
+53;ARROZ CARRETEIRO;Acompanhamento Arroz;Marrom;Sólida;0.25
+54;ARROZ COLORIDO;Acompanhamento Arroz;Branco;Sólida;0.07
+55;ESCONDIDINHO DE INHAME;Principal;Amarelo;Pastosa;0.3
+56;BATATA GRATINADA;Guarnição;Amarelo;Pastosa;0.35
+57;MACARRONADA A BOLONHESA;Principal;Marrom;Pastosa;0.26
+58;ARROZ COM BRÓCOLIS;Acompanhamento Arroz;Verde;Sólida;0.05
+59;FRANGO AO MOLHO BRANCO;Principal;Amarelo;Sólida;0.16
+60;ARROZ DE FORNO;Acompanhamento Arroz;Amarelo;Sólida;0.06
+61;FAROFA DE CENOURA COM OVOS;Guarnição;Amarelo;Sólida;0.20
+62;CUBOS DE FRANGO GRELHADP;Principal;Amarelo;Sólida;0.06
+63;ISCAS DE FRANGO ACEBOLADAS;Principal;Amarelo;Sólida;0.05
+64;BAROA REFOGADA;Guarnição;Amarelo;Pastosa;0.16
+65;ALMÔNDEGAS DE FRANGO AO MOLHO;Principal;Amarelo;Sólida;0.06
+66;CHUCHU REFOGADO;Guarnição;Verde;Sólida;0.20
+67;FRANGO COM QUIABO;Principal;Amarelo;Sólida;0.06
+68;ANGU;Guarnição;Amarelo;Pastosa;0.10
+69;FRANGO ASSADO;Principal;Amarelo;Sólida;0.24
+70;SALPICÃO DE LEGUMES COM FRANGO;Principal;Amarelo;Sólida;0.10
+71;ESTROGONOFE DE FRANGO;Principal;Amarelo;Pastosa;0.7
+72;MACARRÃO AO SUGO;Principal;Vermelho;Pastosa;0.25
+73;LASANHA DE ABOBRINHA;Principal;Amarelo;Sólida;0.07
+74;CUBOS SUÍNOS COM MANDIOCA;Principal;Amarelo;Sólida;0.3
+75;PERNIL COZIDO;Principal;Vermelho;Sólida;0.35
+76;FEIJOADA RICA;Principal;Preto;Sólida;0.26
+77;MACARRÃO AO ALHO E ÓLEO;Guarnição;Amarelo;Sólida;0.05
+78;BIFE SUÍNO;Principal;Vermelho;Sólida;0.16
+79;RISOTO DE CARNE SUÍNA;Principal;Branco;Pastosa;0.06
+80;OVOS COZIDOS;Principal;Branco;Pastosa;0.20
+81;OMELETE DE ESPINAFRE;Principal;Verde;Sólida;0.06
+82;OMELETE DE LEGUMES;Principal;Amarelo;Sólida;0.20
+83;OVOS MEXIDOS;Principal;Amarelo;Pastosa;0.10
+84;PEIXE COM BATATA;Principal;Amarelo;Sólida;0.24
+85;ESCONDIDINHO DE TILÁPIA;Principal;Amarelo;Pastosa;0.10
+86;TORTA DE PEIXE;Principal;Amarelo;Sólida;0.7
+87;PIRÃO DE PEIXE;Principal;Amarelo;Pastosa;0.25
+88;MINGAU DE CHOCOLATE;Sobremesa;Marrom;Pastosa;0.07
+89;CANJICA;Sobremesa;Branco;Pastosa;0.3
+90;ARROZ DOCE;Sobremesa;Branco;Pastosa;0.35
+91;SANDUÍCHE NATURAL;Pão/Cereal;Branco;Sólida;0.26
+92;BOLO DE LARANJA;Sobremesa;Amarelo;Sólida;0.05
+93;SUCO DE CAJU;Suco;Amarelo;Líquida;0.16
+94;BOLO DE CHOCOLATE;Sobremesa;Marrom;Sólida;0.06
+95;BOLO DE CENOURA;Sobremesa;Laranja;Sólida;0.20
+96;VITAMINA DE BANANA E MAÇÃ;Sobremesa;Amarelo;Líquida;0.06
+97;VITAMINA DE ABACATE ;Sobremesa;Verde;Líquida;0.06
+98;BOLO TRADICIONAL;Sobremesa;Marrom;Sólida;0.20
+99;PÃO FRANCÊS COM MANTEIGA;Pão/Cereal;Laranja;Sólida;0.06
+100;PÃO DE QUEIJO;Pão/Cereal;Laranja;Sólida;0.20
+101;CANJICA COM COCO;Sobremesa;Branco;Sólida;0.10
+102;FAROFA DOCE;Guarnição;Laranja;Sólida;0.24
+103;CALDO DE FRANGO COM TORRADA;Guarnição;Laranja;Líquida;0.10
+104;CURAU DE MILHO;Sobremesa;Amarelo;Sólida;0.7
+105;BISCOITO QUEBRADOR;Pão/Cereal;Branco;Sólida;0.25
+106;BOLO DE MILHO;Sobremesa;Amarelo;Sólida;0.07
+107;ESFIRRA DE CARNE;Pão/Cereal;Marrom;Sólida;0.3
+108;PÃO DOCE COM MANTEIGA;Pão/Cereal;Laranja;Sólida;0.35
+109;PATÊ COM TORRADA;Pão/Cereal;Laranja;Sólida;0.26
+110;ROSCA;Pão/Cereal;Laranja;Sólida;0.05
+111;PÃO DE MILHO COM PRESUNTO;Pão/Cereal;Laranja;Sólida;0.16
+112;BISCOITO DOCE;Pão/Cereal;Branco;Sólida;0.06
+113;BISCOITO ÁGUA E SAL;Pão/Cereal;Amarelo;Sólida;0.20
+114;SUCO DE CUPUAÇU;Suco;Branco;Líquida;0.06
+115;SUCO DE ACEROLA;Suco;Vermelho;Líquida;0.12
+116;SUCO DE DE CAJA;Suco;Amarelo;Líquida;0.12
+117;SUCO DE GRAVIOLA;Suco;Laranja;Líquida;0.12
+118;SUCO DE AÇAÍ;Suco;Marrom;Líquida;0.2
+119;SUCO DE UVA;Suco;Roxo;Líquida;0.4
+120;SUCO DE MANGA;Suco;Amarelo;Líquida;0.21
+121;SUCO DE LIMÃO;Suco;Branco;Líquida;0.35
+122;SUCO DE MARACUJÁ;Suco;Amarelo;Líquida;0.32
+123;SEM ARROZ;Acompanhamento Arroz;Branco;Sólida;0.3
+124;ARROZ MARIA IZABEL;Acompanhamento Arroz;Branco;Sólida;0.21
+125;ARROZ A GREGA;Acompanhamento Arroz;Branco;Sólida;0.22
+126;ARROZ POPEYE;Acompanhamento Arroz;Branco;Sólida;0.21
+127;SEM FEIJÃO;Acompanhamento Feijão;Branco;Sólida;0.32
+128;FEIJÃO TROPEIRO;Acompanhamento Feijão;Marrom;Sólida;0.2
+129;TUTU DE FEIJÃO E ABÓBORA;Acompanhamento Feijão;Laranja;Pastosa;0.38
+130;FEIJÃO MARAVILHA;Acompanhamento Feijão;Marrom;Sólida;0.26
+131;LEITE QUEIMADO;Bebidas;Branco;Líquida;0.26
+132;IORGUTE COM FRUTAS;Bebidas;Laranja;Líquida;0.23
+133;VITAMINA DE FRUTAS ENRIQUECIDA;Sobremesa;Laranja;Líquida;0.28
+134;VITAMINA DE BANANA;Sobremesa;Amarelo;Líquida;0.26
+135;VITAMINA DE BANANA COM AVEIA;Sobremesa;Amarelo;Líquida;0.26
+136;SALADA DE ALFACE E TOMATE;Guarnição;Verde;Sólida;0.35
+137;SALADA DE TOMATE COM REPOLHO;Guarnição;Verde;Sólida;0.3
+138;SALADA DE BETERRABA E CENOURA;Guarnição;Verde;Sólida;0.32
+139;SALADA DE CENOURA RALADA COM TOMATE;Guarnição;Laranja;Sólida;0.26
+140;SALADA DE CENOURA E REPOLHO;Guarnição;Laranja;Sólida;0.28
+141;VINAGRETE;Guarnição;Verde;Líquida;0.01
+142;SALADA DE LEGUMES;Guarnição;Verde;Sólida;0.01
+143;Salada de Alface e acelga;Guarnição;Verde;Sólida;0.01
+144;Polenta a jardineira;Guarnição;Amarelo;Sólida;0.01
+145;Salada de cenoura com tomate;Guarnição;Verde;Sólida;0.01
+146;Salada de Beterraba;Guarnição;Verde;Sólida;0.01
+147;Legumes refogados;Guarnição;Verde;Sólida;0.04
+148;Abóbora refogada;Guarnição;Laranja;Sólida;0.01
+149;Salpicão de legumes;Guarnição;Verde;Sólida;0.08
+150;Carne Ensopada com abóbora;Principal;Marrom;Sólida;0.6
+151;Carne de Panela com batata;Principal;Marrom;Sólida;0.50
+152;Purê de batatas com carne moída;Principal;Amarelo;Pastosa;0.50
+153;Iscas de carne acebolada;Principal;Marrom;Sólida;0.4
+154;Almondega ao sugo;Principal;Marrom;Sólida;0.4
+155;Galinhada com milho;Principal;Amarelo;Sólida;0.50
+156;Frango assado com batata;Principal;Amarelo;Sólida;1.2
+157;Carne moída;Principal;Marrom;Sólida;0.52
+158;Estrogonofe Goiano;Principal;Amarelo;Sólida;0.57
+159;Escondidinho de mandioca com carne moída;Principal;Amarelo;Sólida;0.22
+160;Quibebe;Principal;Marrom;Sólida;0.22
+161;Frango ao molho;Principal;Amarelo;Sólida;0.24
+162;Frango ao molho Branco;Principal;Branco;Sólida;0.44
+163;Arroz de Forno;Principal;Branco;Sólida;0.27
+164;Iscas de frango acebolada;Principal;Amarelo;Sólida;0.42
+165;Almondega de Soja;Principal;Marrom;Sólida;0.34
+166;Frango com quiabo;Principal;Amarelo;Sólida;0.10
+167;Omelete de espinafre;Principal;Amarelo;Sólida;0.24
+168;Ovos mexidos;Principal;Branco;Pastosa;0.32
+169;Feijoada;Principal;Marrom;Sólida;0.01
+170;Carne cozida com legumes;Principal;Marrom;Sólida;0.26
+171;Quibe de forno;Principal;Marrom;Sólida;0.3
+172;Macarrão com frango;Principal;Laranja;Sólida;0.01
+173;Melancia;Sobremesa;Vemelho;Pastosa;0.01
+174;Banana;Fruta;Amarelo;Pastosa;0.01
+175;Maçã;Fruta;Vermelho;Pastosa;0.01
+176;Laranja;Fruta;Laranja;Pastosa;0.01
+177;Manga;Fruta;Amarelo;Pastosa;0.01
+178;Abacate;Fruta;Verde;Pastosa;0.01
+179;Goiaba;Fruta;Vermelho;Pastosa;0.01
+180;Abacaxi;Fruta;Amarelo;Pastosa;0.01
+181;Kiwi;Fruta;Verde;Pastosa;0.01
+182;Mamão;Fruta;Laranja;Pastosa;0.01
+183;Melancia;Fruta;Vermelho;Pastosa;0.01

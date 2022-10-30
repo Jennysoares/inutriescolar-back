@@ -11,7 +11,7 @@ cor = {1: 'amarelo', 2: 'vermelho', 3: 'verde', 4: 'marrom', 5: 'N/T'}
 
 consistencia = {1: 'Líquido/pastoso', 2: 'Semi-sólido/sólido'}
 
-refeicao = {1: "desjejum", 2: "almoço", 3: "lanche"}
+refeicao = {1: "Café da Manhã", 2: "almoço", 3: "lanche"}
 
 {
   "nome": "Bolo",
@@ -95,7 +95,7 @@ fundamental = {"energia": 435, "carboidratos": 70.7, "proteinas": 13.6, "lipideo
 
 faixa_etaria = {1: ensino, 2: fundamental}
 
-refeicao = {1: "desjejum", 2: "almoço", 3: "lanche"}
+refeicao = {1: "Café da Manhã", 2: "almoço", 3: "lanche"}
 
 
 nutrientes = {"Energia": 0, "CHO": 0, "PTN": 0, "LIP": 0, "Fibras": 0, "Ca": 0, "Fe": 0, "Mg": 0, "Zn": 0 }

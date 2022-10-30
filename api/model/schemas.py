@@ -30,10 +30,10 @@ class Prato(BaseModel):
 class Criacao(BaseModel):
     id_alimento: int
     id_prato: int
-    qtdEnsinoCreche: int
-    qtdEnsinoFun1: int
-    qtdEnsinoFun2: int
-    qtdEnsinoMedio: int
+    qtdEnsinoCreche: float
+    qtdEnsinoFun1: float
+    qtdEnsinoFun2: float
+    qtdEnsinoMedio: float
 
 class CriacaoList(BaseModel):
     data: List[Criacao]

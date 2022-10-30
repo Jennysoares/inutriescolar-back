@@ -41,10 +41,10 @@ class Criacao(Base):
     id = Column(Integer, primary_key=True, index=True)
     id_alimento = Column(Integer, ForeignKey("alimentos.id"))
     id_prato = Column(Integer, ForeignKey("pratos.id"))
-    qtdEnsinoCreche= Column(Integer)
-    qtdEnsinoFun1 = Column(Integer)
-    qtdEnsinoFun2 = Column(Integer)
-    qtdEnsinoMedio= Column(Integer)
+    qtdEnsinoCreche= Column(Float)
+    qtdEnsinoFun1 = Column(Float)
+    qtdEnsinoFun2 = Column(Float)
+    qtdEnsinoMedio= Column(Float)
     
 
     pratos = relationship("Prato", back_populates="criacao")

@@ -1,40 +1,39 @@
+from api.model.crud import buscarTodosAlimentos
 from api.modules.moduloMenu import gerarMenu
 from sqlalchemy.orm import Session
 import random
-from api.model.querysBusca import buscarReferencial, buscarCriacao, buscarComidaPorGrupoDeIds
+from api.model.querysBusca import buscarTodasCriacoes
 from operator import itemgetter
-from api.modules.moduloPrato import retornaListaDePratosPorCategoriaRefeicao
+from api.modules.moduloPrato import buscarPratosCardapio
 
-
-def gerar_populacao(tam_pop, qtdDias, db: Session):
+def gerar_populacao(tam_pop, qtdDias, alergia, db: Session):
     populacao = []
     
 
     for i in range(tam_pop):
         cardapioSemanal = []
         for j in range(qtdDias):
-            individuo = gerarMenu(db=db)
+            individuo = gerarMenu(alergia, db=db)
             cardapioSemanal.append(individuo)
         populacao.append(cardapioSemanal)
 
     return populacao
 
-def funcao_fitness(populacao, tipo, escolaridade, db: Session):
+def funcao_fitness(populacao, tipo, escolaridade, referencial, db: Session):
     fitness_valores = dict()
     if tipo == 1:
         for i in range(0, len(populacao)):
-            fitness = funcao_objetivo(populacao[i], escolaridade, db)
+            fitness = funcao_objetivo(populacao[i], escolaridade, referencial, db)
             fitness_valores[i] = fitness
     else:
         for i in range(0, len(populacao)):
-            fitness = funcao_objetivo(populacao[i], escolaridade, db)
+            fitness = funcao_objetivo(populacao[i], escolaridade, referencial, db)
             fitness_valores[fitness] = i
 
     return fitness_valores
 
 
-def funcao_objetivo(cardapio, escolaridade, db: Session):    
-    referencial = buscarReferencial(db, escolaridade)[0]
+def funcao_objetivo(cardapio, escolaridade, referencial, db: Session):    
     f1 = calcularErroNutri(cardapio, escolaridade, referencial, db)
     f2 = calcularCusto(cardapio,  referencial)
 
@@ -42,6 +41,12 @@ def funcao_objetivo(cardapio, escolaridade, db: Session):
     aptidao = round(aptidao, 3)
 
     return aptidao
+
+def buscarComidaPorIds(listaDeAlimentos:list, ids: list):
+    return [x for x in listaDeAlimentos if x.id in ids]
+
+def buscarCriacaoPorIds(listaDeCriacoes:list, id: int):
+    return [x for x in listaDeCriacoes if x.id == id]
 
 
 def calcularErroNutri(cardapio, escolaridadeId, referencial, db: Session):
@@ -55,12 +60,15 @@ def calcularErroNutri(cardapio, escolaridadeId, referencial, db: Session):
                          ferro=0,
                          zinco=0)
 
+    listaDeAlimentos = buscarTodosAlimentos(db)
+    listaDeCriacoes = buscarTodasCriacoes(db)
+
     for dia in cardapio:
         for refeicao in dia:
             for pratos in dia[refeicao]:
-                criacao = buscarCriacao(db, pratos.id)
+                criacao = buscarCriacaoPorIds(listaDeCriacoes, pratos.id)
                 ids = [element.id_alimento for element in criacao]
-                alimentosDoPrato = buscarComidaPorGrupoDeIds(db, ids)
+                alimentosDoPrato = buscarComidaPorIds(listaDeAlimentos, ids)
                 for ingrediente in criacao:
                     alimento = next(x for x in alimentosDoPrato if x.id == ingrediente.id_alimento )
                     for nutriente in alimento.__dict__ :
@@ -127,7 +135,7 @@ def calcularErroNutri(cardapio, escolaridadeId, referencial, db: Session):
     for dia in cardapio:
         for refeicao in dia:
             for pratos in dia[refeicao]:
-                if pratos.categoria in ["Acomp Feijão", "Guarnição", "Principal"]:
+                if pratos.categoria in ["Acompanhamento Feijão", "Guarnição", "Principal"]:
                     if pratos.consistencia == 'Liquída' or pratos.consistencia == 'Pastosa':
                         liqpas += 1
 
@@ -142,11 +150,6 @@ def calcularErroNutri(cardapio, escolaridadeId, referencial, db: Session):
         for pratoAlmoco in dia['Almoço']:
             if pratoAlmoco.categoria in ["Entrada","Guarnição", "Principal", "Sobremesa", "Bebidas"]:
                 if pratoAlmoco in dia['Jantar']:
-                    restricaoRepeticao += 1
-
-        for pratosLanche in dia['Lanche']:
-            if pratoAlmoco.categoria in ["Fruta","Bebidas", "Pão/Cereal"]:
-                if pratosLanche in dia['Desjejum']:
                     restricaoRepeticao += 1
 
     indice = 0
@@ -189,7 +192,6 @@ def calcularCusto(cardapio, referencial):
             for pratos in dia[refeicao]:
                 custoCardapio += float(pratos.valor)
 
-    print(referencial.custoAluno)
     if custoCardapio > referencial.custoAluno:
         w = 1
 
@@ -197,8 +199,8 @@ def calcularCusto(cardapio, referencial):
 
     return custoCardapio + penalidade
 
-def funcao_roleta(pop, escolaridade, db: Session):
-    fitnessCandidatos = funcao_fitness(pop, 1, escolaridade, db)    
+def funcao_roleta(pop, escolaridade, referencial, db: Session):
+    fitnessCandidatos = funcao_fitness(pop, 1, escolaridade, referencial, db)    
     fitnessTotal = round(sum(fitnessCandidatos.values()))
     roleta = list()
     for indiceCandidato in fitnessCandidatos.keys():
@@ -220,7 +222,7 @@ def funcao_roleta(pop, escolaridade, db: Session):
     return pais     
 
     
-def funcao_torneio(pop, escolaridade, db: Session):
+def funcao_torneio(pop, escolaridade, referencial, db: Session):
     populacao = list(pop[:])
     tamanhoPopulacao = len(populacao)
     qtdPopulacaoTorneio = int(tamanhoPopulacao * 0.6)
@@ -235,7 +237,7 @@ def funcao_torneio(pop, escolaridade, db: Session):
                 indicesCandidatosSelecionados.append(indiceCanditado)
                 cromossomosCanditados.append(populacao[indiceCanditado])
 
-        fitnessCandidatos = funcao_fitness(cromossomosCanditados, 1, escolaridade, db)    
+        fitnessCandidatos = funcao_fitness(cromossomosCanditados, 1, escolaridade, referencial, db)    
         fitnessOrdenado = sorted(fitnessCandidatos.items(), key=itemgetter(1))
         paisSelecionados.append(cromossomosCanditados[fitnessOrdenado[0][0]])
         indiceCandidatoGanhador = populacao.index(cromossomosCanditados[fitnessOrdenado[0][0]])
@@ -243,8 +245,8 @@ def funcao_torneio(pop, escolaridade, db: Session):
     return paisSelecionados
 
 
-def funcao_dizimacao_corte(pop, escolaridade, db: Session):
-    fitnessCandidatos = funcao_fitness(pop, 1, escolaridade, db)    
+def funcao_dizimacao_corte(pop, escolaridade, referencial, db: Session):
+    fitnessCandidatos = funcao_fitness(pop, 1, escolaridade, referencial, db)    
     fitnessOrdenado = sorted(fitnessCandidatos.items(), key=itemgetter(1))
     qtdRemocao = int(len(pop) * 0.4)
     remover = list()
@@ -300,11 +302,11 @@ def cruzamento(pais, taxa_cruzamento):
 
     return filhos
 
-def listaTodosPratosPorCategoria(categoria, refeicao, db: Session):
-    return retornaListaDePratosPorCategoriaRefeicao(refeicao, categoria, db)
+def listaTodosPratosPorCategoria(categoria, alergia, refeicao, db: Session):
+    return buscarPratosCardapio(refeicao, alergia, db, categoria)
 
 
-def mutacao(filhos, taxa_mutacao,  db: Session):
+def mutacao(filhos, taxa_mutacao,  alergia, db: Session):
     if random.random() < taxa_mutacao:
         for filho in filhos:
             dias = len(filho)
@@ -313,9 +315,10 @@ def mutacao(filhos, taxa_mutacao,  db: Session):
                 qtd_pratos = len(filho[dia_escolhido][refeicao])
                 indice_mut = random.randint(0, qtd_pratos - 1)
                 mutado = filho[dia_escolhido][refeicao][indice_mut]
-
+                listaDePratos = listaTodosPratosPorCategoria(filho[dia_escolhido][refeicao][indice_mut].categoria, alergia, refeicao, db)
+                
                 while mutado == filho[dia_escolhido][refeicao][indice_mut]:
-                    mutado = random.choice(listaTodosPratosPorCategoria(filho[dia_escolhido][refeicao][indice_mut].categoria, refeicao, db))
+                    mutado = random.choice(listaDePratos)
 
                 filho[dia_escolhido][refeicao][indice_mut] = mutado
 
