@@ -9,6 +9,7 @@ categorias = {
         "Jantar": ["Acompanhamento Arroz", "Acompanhamento Feijão", "Guarnição", "Principal", "Suco", "Sobremesa"]
         }
 
+
 def montarQueryAlimentosExcecao(alergia: str):
     flagGrupo = 0
     flagNome = 0
@@ -53,8 +54,7 @@ def montarQueryAlimentosExcecao(alergia: str):
 
     return queryAlimentos
 
-def buscarPratosCardapio(refeicao: str, alergia: str, db: Session, refeicaoEspecifica: str = None): 
-    lista_refeicoes = []
+def retornaPratosParametros(alergia: str, db: Session):
     pratos = []
 
     if "0" in alergia:
@@ -64,6 +64,11 @@ def buscarPratosCardapio(refeicao: str, alergia: str, db: Session, refeicaoEspec
         idAlimentosExcecao = bucarIdsAlimentosExcecao(db, query)
         idsCombinacaoExcecao = buscarIdsCombinacaoExcecao(db, idAlimentosExcecao)
         pratos = buscarPratosExcecao(db, idsCombinacaoExcecao)
+
+    return pratos
+
+def buscarPratosCardapio(refeicao: str, pratos: list, refeicaoEspecifica: str = None): 
+    lista_refeicoes = []
 
     if refeicao  == "Café da Manhã":
         lista_refeicoes.append([x for x in pratos if x.categoria == "Frutas"])
@@ -84,9 +89,9 @@ def buscarPratosCardapio(refeicao: str, alergia: str, db: Session, refeicaoEspec
         return lista_refeicoes
 
 
-def gerarCafeManha(alergia: str, db: Session):
+def gerarCafeManha(alimentos: list):
     prato_cafeManha = []
-    pratos_cafeManha = buscarPratosCardapio("Café da Manhã", alergia, db=db)
+    pratos_cafeManha = buscarPratosCardapio("Café da Manhã", alimentos)
 
     for i in range(len(pratos_cafeManha)):
         tam = len(pratos_cafeManha[i])
@@ -97,9 +102,9 @@ def gerarCafeManha(alergia: str, db: Session):
     return prato_cafeManha
 
 
-def gerarAlmoco(alergia: str, db: Session):
+def gerarAlmoco(alimentos: list):
     prato_almoco = []
-    pratos_almoco = buscarPratosCardapio("Almoço", alergia, db=db)
+    pratos_almoco = buscarPratosCardapio("Almoço", alimentos)
     for i in range(len(pratos_almoco)):
         tam = len(pratos_almoco[i])
         aux = randint(0, tam - 1)
@@ -108,10 +113,10 @@ def gerarAlmoco(alergia: str, db: Session):
     return prato_almoco
 
 
-def gerarLanche(alergia: str, db: Session):
+def gerarLanche(alimentos: list):
     prato_lanche = []
 
-    pratos_lanche = buscarPratosCardapio("Lanche", alergia, db=db)
+    pratos_lanche = buscarPratosCardapio("Lanche", alimentos)
 
     for i in range(len(pratos_lanche)):
         tam = len(pratos_lanche[i])
@@ -122,10 +127,10 @@ def gerarLanche(alergia: str, db: Session):
     return prato_lanche
 
 
-def gerarJanta(alergia: str, db: Session):
+def gerarJanta(alimentos: list):
     prato_jantar = []
 
-    pratos_jantar = buscarPratosCardapio("Jantar", alergia, db=db)
+    pratos_jantar = buscarPratosCardapio("Jantar", alimentos)
 
     for i in range(len(pratos_jantar)):
         tam = len(pratos_jantar[i])
