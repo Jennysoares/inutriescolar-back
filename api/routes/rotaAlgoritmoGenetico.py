@@ -46,7 +46,7 @@ def gerarCardapioAG(numIndividuos: int, qtd_dias: int, escolaridade: int, tipoSe
 
     print(f'\nCusto geração inicial = {custo}')
 
-    for i in range(0, 1):
+    for i in range(0, 500):
         nova_populacao = []
         corte_populacao = []
 
