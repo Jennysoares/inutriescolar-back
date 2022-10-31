@@ -83,19 +83,19 @@ def gerarCardapioAG(numIndividuos: int, qtd_dias: int, escolaridade: int, tipoSe
 def algoritmo_genetico(numIndividuos: int, qtd_dias: int, escolaridade: int, alergia: str, db: Session = Depends(get_db)):
     
     populacao = gerarCardapioAG(numIndividuos, qtd_dias, escolaridade, 1, alergia, db)
-    return populacao
+    return {"menu": populacao }
 
 
 @algoritmo.get("/torneio/{numIndividuos}/{qtd_dias}/{escolaridade}/{alergia}")
 def algoritmo_genetico(numIndividuos: int, qtd_dias: int, escolaridade: int, alergia: str, db: Session = Depends(get_db)):
 
     populacao = gerarCardapioAG(numIndividuos, qtd_dias, escolaridade, 3, alergia, db)
-    return populacao
+    return {"menu": populacao }
 
 
 @algoritmo.get("/roleta/{numIndividuos}/{qtd_dias}/{escolaridade}/{alergia}")
 def algoritmo_genetico(numIndividuos: int, qtd_dias: int, escolaridade: int, alergia: str, db: Session = Depends(get_db)):
 
     populacao = gerarCardapioAG(numIndividuos, qtd_dias, escolaridade, 2, alergia, db)
-    return populacao
+    return {"menu": populacao }
 
