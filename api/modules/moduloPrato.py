@@ -89,53 +89,14 @@ def buscarPratosCardapio(refeicao: str, pratos: list, refeicaoEspecifica: str = 
         return lista_refeicoes
 
 
-def gerarCafeManha(alimentos: list):
-    prato_cafeManha = []
-    pratos_cafeManha = buscarPratosCardapio("Café da Manhã", alimentos)
+def gerarRefeicao(alimentos: list, refeicao: str):
+    prato_refeicao = []
+    pratos_refeicao = buscarPratosCardapio(refeicao, alimentos)
 
-    for i in range(len(pratos_cafeManha)):
-        tam = len(pratos_cafeManha[i])
+    for i in range(len(pratos_refeicao)):
+        tam = len(pratos_refeicao[i])
         aux = randint(0, tam - 1)
 
-        prato_cafeManha.append(pratos_cafeManha[i][aux])
+        prato_refeicao.append(pratos_refeicao[i][aux])
 
-    return prato_cafeManha
-
-
-def gerarAlmoco(alimentos: list):
-    prato_almoco = []
-    pratos_almoco = buscarPratosCardapio("Almoço", alimentos)
-    for i in range(len(pratos_almoco)):
-        tam = len(pratos_almoco[i])
-        aux = randint(0, tam - 1)
-
-        prato_almoco.append(pratos_almoco[i][aux])
-    return prato_almoco
-
-
-def gerarLanche(alimentos: list):
-    prato_lanche = []
-
-    pratos_lanche = buscarPratosCardapio("Lanche", alimentos)
-
-    for i in range(len(pratos_lanche)):
-        tam = len(pratos_lanche[i])
-        aux = randint(0, tam - 1)
-
-        prato_lanche.append(pratos_lanche[i][aux])
-
-    return prato_lanche
-
-
-def gerarJanta(alimentos: list):
-    prato_jantar = []
-
-    pratos_jantar = buscarPratosCardapio("Jantar", alimentos)
-
-    for i in range(len(pratos_jantar)):
-        tam = len(pratos_jantar[i])
-        aux = randint(0, tam - 1)
-
-        prato_jantar.append(pratos_jantar[i][aux])
-
-    return prato_jantar
+    return prato_refeicao

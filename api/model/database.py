@@ -7,7 +7,7 @@ POSTGRE_DATABASE_URL = "postgres://elgixmap:j1ELns7Q6pC9sN2VYvK5U1P-wh-eFUr6@pea
 
 
 engine = create_engine(
-    POSTGRE_DATABASE_URL, echo=True
+    POSTGRE_DATABASE_URL
 )
 
 Base = declarative_base()

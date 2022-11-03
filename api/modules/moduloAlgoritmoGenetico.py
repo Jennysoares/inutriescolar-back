@@ -2,30 +2,25 @@ from api.modules.moduloMenu import gerarMenu
 from sqlalchemy.orm import Session
 import random
 from operator import itemgetter
-from api.modules.moduloPrato import  retornaPratosParametros
 
 def gerar_populacao(tam_pop, qtdDias, alimentos):
     populacao = []   
 
     for i in range(tam_pop):
-        cardapioSemanal = []
+        cardapioDia = []
         for j in range(qtdDias):
             individuo = gerarMenu(alimentos)
-            cardapioSemanal.append(individuo)
-        populacao.append(cardapioSemanal)
+            cardapioDia.append(individuo)
+        populacao.append(cardapioDia)
 
     return populacao
 
-def funcao_fitness(populacao, tipo, escolaridade, referencial, listaDeAlimentos, listaDeCriacoes):
+def funcao_fitness(populacao, escolaridade, referencial, listaDeAlimentos, listaDeCriacoes):
     fitness_valores = dict()
-    if tipo == 1:
-        for i in range(0, len(populacao)):
-            fitness = funcao_objetivo(populacao[i], escolaridade, referencial, listaDeAlimentos, listaDeCriacoes)
-            fitness_valores[i] = fitness
-    else:
-        for i in range(0, len(populacao)):
-            fitness = funcao_objetivo(populacao[i], escolaridade, referencial, listaDeAlimentos, listaDeCriacoes)
-            fitness_valores[fitness] = i
+
+    for i in range(0, len(populacao)):
+        fitness = funcao_objetivo(populacao[i], escolaridade, referencial, listaDeAlimentos, listaDeCriacoes)
+        fitness_valores[i] = fitness
 
     return fitness_valores
 
@@ -195,55 +190,69 @@ def calcularCusto(cardapio, referencial):
 
     return custoCardapio + penalidade
 
-def funcao_roleta(pop, escolaridade, referencial, listaDeAlimentos, listaDeCriacoes):
-    fitnessCandidatos = funcao_fitness(pop, 1, escolaridade, referencial, listaDeAlimentos, listaDeCriacoes)    
-    fitnessTotal = round(sum(fitnessCandidatos.values()))
-    roleta = list()
-    for indiceCandidato in fitnessCandidatos.keys():
-        proporcao = round(fitnessCandidatos[indiceCandidato]) * 100 / fitnessTotal
-        for j in range(0, round(proporcao)):
-            roleta.append(indiceCandidato)
+def funcao_roleta_criacao(pop, escolaridade, referencial, listaDeAlimentos, listaDeCriacoes):
+    fitnessCandidatos = funcao_fitness(pop, escolaridade, referencial, listaDeAlimentos, listaDeCriacoes) 
+    fitnessOrdenado = dict(sorted(fitnessCandidatos.items(), key=itemgetter(1))) 
+    fitnessTotal = round(sum(fitnessOrdenado.values()))
+    roletaCandidatos = {}
+    proporcaoInicial = 0
+    for indiceCandidato in fitnessOrdenado.keys():
+        proporcaoFinal = round(fitnessOrdenado[indiceCandidato]) * 100 / fitnessTotal
+        if proporcaoInicial == proporcaoFinal:
+              proporcaoFinal += 0.1
 
-    pais = list()
-
-    pai1 = random.randint(0, len(roleta) - 1)
-    pais.append(pop[roleta[pai1]])
-
-    pai2 = pai1
-    while pai2 == pai1:
-        pai2 = random.randint(0, len(roleta) - 1)
-
-    pais.append(pop[roleta[pai2]])
-
-    return pais     
+        roletaCandidatos.update({indiceCandidato: [proporcaoInicial, proporcaoFinal]})
+        proporcaoInicial = proporcaoFinal    
 
     
-def funcao_torneio(pop, escolaridade, referencial, listaDeAlimentos, listaDeCriacoes):
+    return roletaCandidatos     
+
+def funcao_roleta_pais(pop, roletaCandidatos):
+    pais = list()
+    pai1 = random.uniform(0, roletaCandidatos[len(pop)-1][1]- 0.1)
+    indicePai1 = 0
+    for item in roletaCandidatos.values():
+        if (pai1 >= item[0] and pai1 < item[1]):
+            indicePai1 = list(roletaCandidatos.keys())[list(roletaCandidatos.values()).index(item)]
+            pais.append(pop[indicePai1])
+            break
+    
+    pai2 = random.uniform(0, roletaCandidatos[len(pop)-1][1]- 0.1)
+    indicePai2 = 0
+    for item in roletaCandidatos.values():
+        if (pai2 >= item[0] and pai2 < item[1]):
+            indicePai2 = list(roletaCandidatos.keys())[list(roletaCandidatos.values()).index(item)]
+            pais.append(pop[indicePai2])
+            break    
+    return pais  
+
+    
+def funcao_torneio(pop, fitness):
     populacao = list(pop[:])
     tamanhoPopulacao = len(populacao)
     qtdPopulacaoTorneio = int(tamanhoPopulacao * 0.6)
     paisSelecionados = list()
+    fitnessCandidatos = {}
+    primeiroGanhador = -1
     
     while len(paisSelecionados) != 2:
-        indicesCandidatosSelecionados = list()
         cromossomosCanditados = list()
+        fitnessCandidatos = {}
 
         while len(cromossomosCanditados) != qtdPopulacaoTorneio:
-            indiceCanditado = random.randint(0, len(populacao) - 1)
-            if indiceCanditado not in indicesCandidatosSelecionados:
-                indicesCandidatosSelecionados.append(indiceCanditado)
-                cromossomosCanditados.append(populacao[indiceCanditado])
-
-        fitnessCandidatos = funcao_fitness(cromossomosCanditados, 1, escolaridade, referencial, listaDeAlimentos, listaDeCriacoes)    
+            indiceCanditado = random.randint(0, len(populacao) - 1)    
+            if (indiceCanditado not in cromossomosCanditados) and (indiceCanditado != primeiroGanhador):
+                cromossomosCanditados.append(indiceCanditado)
+                fitnessCandidatos.update({indiceCanditado: fitness[indiceCanditado]})
+        
         fitnessOrdenado = sorted(fitnessCandidatos.items(), key=itemgetter(1))
-        paisSelecionados.append(cromossomosCanditados[fitnessOrdenado[0][0]])
-        indiceCandidatoGanhador = populacao.index(cromossomosCanditados[fitnessOrdenado[0][0]])
-        del populacao[indiceCandidatoGanhador]
+        paisSelecionados.append(populacao[fitnessOrdenado[0][0]])
+        primeiroGanhador = fitnessOrdenado[0][0]
     return paisSelecionados
 
 
 def funcao_dizimacao_corte(pop, escolaridade, referencial, listaDeAlimentos, listaDeCriacoes):
-    fitnessCandidatos = funcao_fitness(pop, 1, escolaridade, referencial, listaDeAlimentos, listaDeCriacoes)    
+    fitnessCandidatos = funcao_fitness(pop, escolaridade, referencial, listaDeAlimentos, listaDeCriacoes)    
     fitnessOrdenado = sorted(fitnessCandidatos.items(), key=itemgetter(1))
     qtdRemocao = int(len(pop) * 0.4)
     remover = list()
