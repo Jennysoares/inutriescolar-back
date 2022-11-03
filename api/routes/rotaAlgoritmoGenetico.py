@@ -27,7 +27,7 @@ def gerarCardapioAG(numIndividuos: int, qtd_dias: int, escolaridade: int, tipoSe
     pratos = retornaPratosParametros(alergia, db)
     listaDeTodosAlimentos = buscarTodosAlimentos(db)
     listaDeTodasCriacoes = buscarTodasCriacoes(db)
-    geracoes = 50
+    geracoes = 100
     
     if populacaoRecebida == None:
         for _ in range(numIndividuos):
