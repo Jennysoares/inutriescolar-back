@@ -36,7 +36,6 @@ def gerarCardapioAG(numIndividuos: int, qtd_dias: int, escolaridade: int, tipoSe
         populacao = populacaoRecebida
     
     geracao_atual = populacao 
-    fitnessInicial = funcao_fitness(geracao_atual, escolaridade, referencial, listaDeTodosAlimentos, listaDeTodasCriacoes)    
 
     i = 0
     while i != geracoes:
@@ -70,12 +69,8 @@ def gerarCardapioAG(numIndividuos: int, qtd_dias: int, escolaridade: int, tipoSe
                 nova_populacao.pop()
 
         geracao_atual = nova_populacao
-        i+= 1
-    fitnessFinal = funcao_fitness(geracao_atual, escolaridade, referencial, listaDeTodosAlimentos, listaDeTodasCriacoes)    
+        i+= 1   
 
-    print(f'Quantidade de indivíduos/cardápios: {len(geracao_atual)}')
-    print(f'Média do Fitness geração inicial = {sum(fitnessInicial.values()) / len(fitnessInicial):.2f}')
-    print(f'Média do Fitness geração Final = {sum(fitnessFinal.values()) / len(fitnessFinal):.2f}')
 
     return geracao_atual
 
@@ -161,8 +156,20 @@ def algoritmo_genetico(numIndividuos: int, qtd_dias: int, escolaridade: int, ale
 
 @algoritmo.get("/torneio/{numIndividuos}/{qtd_dias}/{escolaridade}/{alergia}")
 def algoritmo_genetico(numIndividuos: int, qtd_dias: int, escolaridade: int, alergia: str, db: Session = Depends(get_db)):
+    referencial = buscarReferencial(db, escolaridade)[0]
+    pratos = retornaPratosParametros(alergia, db)
+    listaDeTodosAlimentos = buscarTodosAlimentos(db)
+    listaDeTodasCriacoes = buscarTodasCriacoes(db)
+    populacao = []
+
+    for _ in range(numIndividuos):
+            populacao = gerar_populacao(numIndividuos, qtd_dias, pratos)
+
+    fitnessInicial = funcao_fitness(populacao, escolaridade, referencial, listaDeTodosAlimentos, listaDeTodasCriacoes)   
 
     populacao = gerarCardapioAG(numIndividuos, qtd_dias, escolaridade, 3, alergia, db)
+    gerarCardapioAGComparacao(100, numIndividuos, escolaridade, 3, populacao, fitnessInicial, referencial, pratos, listaDeTodosAlimentos, listaDeTodasCriacoes)
+
     return {"menu": populacao }
 
 
