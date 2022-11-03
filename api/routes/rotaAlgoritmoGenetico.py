@@ -36,6 +36,7 @@ def gerarCardapioAG(numIndividuos: int, qtd_dias: int, escolaridade: int, tipoSe
         populacao = populacaoRecebida
     
     geracao_atual = populacao 
+    fitnessInicial = funcao_fitness(geracao_atual, escolaridade, referencial, listaDeTodosAlimentos, listaDeTodasCriacoes)    
 
     i = 0
     while i != geracoes:
@@ -70,6 +71,11 @@ def gerarCardapioAG(numIndividuos: int, qtd_dias: int, escolaridade: int, tipoSe
 
         geracao_atual = nova_populacao
         i+= 1
+    fitnessFinal = funcao_fitness(geracao_atual, escolaridade, referencial, listaDeTodosAlimentos, listaDeTodasCriacoes)    
+
+    print(f'Quantidade de indivíduos/cardápios: {len(geracao_atual)}')
+    print(f'Média do Fitness geração inicial = {sum(fitnessInicial.values()) / len(fitnessInicial):.2f}')
+    print(f'Média do Fitness geração Final = {sum(fitnessFinal.values()) / len(fitnessFinal):.2f}')
 
     return geracao_atual
 
